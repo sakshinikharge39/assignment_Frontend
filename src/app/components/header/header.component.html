@@ -3,9 +3,7 @@
     <!-- Brand / Title -->
     <div class="brand-section">
       <div class="brand-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-        </svg>
+        <i class="fa-solid fa-list-check"></i>
       </div>
       <div class="brand-titles">
         <h1 class="brand-name">TaskPlanner</h1>
@@ -21,7 +19,7 @@
       </div>
       <div class="stat-pill stat-overdue" [class.has-overdue]="counts().overdue > 0">
         <span class="stat-label">
-          <span class="stat-icon" aria-hidden="true">⚠️</span>
+          <i class="fa-solid fa-triangle-exclamation stat-icon" aria-hidden="true"></i>
           Overdue
         </span>
         <span class="stat-value">{{ counts().overdue }}</span>
@@ -62,10 +60,7 @@
         (click)="onResetData()"
         title="Reset to default seeded demo tasks"
       >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-          <path d="M3 3v5h5"/>
-        </svg>
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
         <span class="btn-text">Reset Demo</span>
       </button>
     </div>
@@ -75,7 +70,7 @@
   @if (failNextSave()) {
     <div class="simulation-banner" role="status" aria-live="polite">
       <div class="container banner-inner">
-        <span class="banner-icon" aria-hidden="true">⚠️</span>
+        <i class="fa-solid fa-triangle-exclamation banner-icon" aria-hidden="true"></i>
         <span class="banner-message">
           <strong>Save Failure Mode is ACTIVE:</strong> Any attempt to create or edit tasks will simulate a network/server failure. This allows you to verify form recovery and the retry mechanism.
         </span>

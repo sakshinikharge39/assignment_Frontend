@@ -10,7 +10,6 @@
   transition: all var(--transition-fast);
   cursor: pointer;
   position: relative;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .task-card:hover {
@@ -50,7 +49,6 @@
   border-radius: var(--radius-full);
   font-size: 0.82rem;
   font-weight: 600;
-  font-family: "Times New Roman", Times, serif;
   border: 1px solid transparent;
   transition: all var(--transition-fast);
 }

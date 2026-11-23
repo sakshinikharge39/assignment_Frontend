@@ -20,9 +20,9 @@ export class FilterBarComponent {
   readonly sortDirection = this.store.sortDirection;
   readonly searchQuery = this.store.searchQuery;
 
-  readonly filterTabs: { id: TaskFilter; label: string; icon?: string }[] = [
+  readonly filterTabs: { id: TaskFilter; label: string; iconClass?: string }[] = [
     { id: 'all', label: 'All Tasks' },
-    { id: 'overdue', label: 'Overdue', icon: '⚠️' },
+    { id: 'overdue', label: 'Overdue', iconClass: 'fa-solid fa-triangle-exclamation' },
     { id: 'todo', label: 'Todo' },
     { id: 'in-progress', label: 'In Progress' },
     { id: 'done', label: 'Done' },

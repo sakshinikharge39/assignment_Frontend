@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .controls-row {
@@ -45,7 +44,6 @@
   background-color: var(--color-bg-surface);
   color: var(--color-text-main);
   font-size: 0.95rem;
-  font-family: "Times New Roman", Times, serif;
   transition: all var(--transition-fast);
   box-shadow: var(--shadow-sm);
 }
@@ -57,7 +55,6 @@
 
 .search-box .search-input::placeholder {
   color: var(--color-text-muted);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .search-box .search-clear-btn {
@@ -109,7 +106,6 @@
   padding: 0.6rem 2rem 0.6rem 0.85rem;
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: "Times New Roman", Times, serif;
   color: var(--color-text-main);
   cursor: pointer;
   box-shadow: var(--shadow-sm);

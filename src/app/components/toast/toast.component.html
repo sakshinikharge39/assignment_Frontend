@@ -9,21 +9,11 @@
     >
       <div class="toast-icon" aria-hidden="true">
         @if (toast.type === 'success') {
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
+          <i class="fa-solid fa-circle-check fa-lg"></i>
         } @else if (toast.type === 'error') {
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
+          <i class="fa-solid fa-circle-xmark fa-lg"></i>
         } @else {
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="16" x2="12" y2="12"/>
-            <line x1="12" y1="8" x2="12.01" y2="8"/>
-          </svg>
+          <i class="fa-solid fa-circle-info fa-lg"></i>
         }
       </div>
 
@@ -40,7 +30,7 @@
         (click)="dismiss(toast.id)"
         aria-label="Dismiss notification"
       >
-        ✕
+        <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
   }

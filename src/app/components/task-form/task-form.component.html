@@ -23,7 +23,7 @@
         (click)="onCancel()"
         aria-label="Close task form modal"
       >
-        ✕
+        <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
 
@@ -31,11 +31,7 @@
     @if (saveError()) {
       <div class="save-error-alert" role="alert" aria-live="assertive">
         <div class="alert-icon-wrapper">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
+          <i class="fa-solid fa-circle-exclamation fa-lg" aria-hidden="true"></i>
         </div>
         <div class="alert-content">
           <div class="alert-title">Save Operation Failed</div>
@@ -51,9 +47,7 @@
               (click)="retrySave()"
               [disabled]="saving()"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-              </svg>
+              <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
               {{ saving() ? 'Retrying...' : 'Retry Save' }}
             </button>
           </div>
@@ -127,9 +121,13 @@
               [attr.aria-checked]="priorityControl?.value === p"
             >
               <span class="priority-shape" aria-hidden="true">
-                @if (p === 'High') { ▲ }
-                @else if (p === 'Medium') { ■ }
-                @else { ▼ }
+                @if (p === 'High') {
+                  <i class="fa-solid fa-caret-up"></i>
+                } @else if (p === 'Medium') {
+                  <i class="fa-solid fa-square"></i>
+                } @else {
+                  <i class="fa-solid fa-caret-down"></i>
+                }
               </span>
               <span class="priority-text">{{ p }}</span>
             </button>

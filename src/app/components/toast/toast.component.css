@@ -9,7 +9,6 @@
   max-width: 380px;
   width: calc(100% - 2rem);
   pointer-events: none;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .toast-card {
@@ -23,7 +22,6 @@
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
   animation: slideUp 200ms ease;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .toast-card.toast-success {
@@ -57,7 +55,6 @@
 }
 
 .toast-content .toast-title {
-  font-family: "Times New Roman", Times, serif;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--color-text-main);
@@ -68,7 +65,6 @@
   color: var(--color-text-secondary);
   margin-top: 0.15rem;
   line-height: 1.35;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .toast-close-btn {
