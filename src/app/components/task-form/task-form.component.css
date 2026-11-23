@@ -9,7 +9,6 @@
   justify-content: center;
   padding: var(--space-4);
   animation: fadeIn 200ms ease;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .form-modal-container {
@@ -24,7 +23,6 @@
   max-height: 90vh;
   overflow-y: auto;
   animation: scaleUp 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .modal-header {
@@ -36,7 +34,6 @@
 }
 
 .modal-header .header-title-group .modal-title {
-  font-family: "Times New Roman", Times, serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-text-main);
@@ -47,7 +44,6 @@
   font-size: 0.9rem;
   color: var(--color-text-muted);
   margin-top: 0.2rem;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .modal-header .close-btn {
@@ -94,7 +90,6 @@
   font-size: 0.98rem;
   margin-bottom: 0.2rem;
   color: #9f1239;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .save-error-alert .alert-content .alert-message {
@@ -102,7 +97,6 @@
   line-height: 1.4;
   color: #881337;
   margin-bottom: var(--space-3);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .save-error-alert .alert-content .alert-footer {
@@ -123,14 +117,12 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: #9f1239;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .save-error-alert .alert-content .alert-footer .alert-tip {
   font-size: 0.82rem;
   color: #4c0519;
   font-style: italic;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .save-error-alert .alert-content .alert-footer .btn-retry {
@@ -143,7 +135,6 @@
   border-radius: var(--radius-md);
   font-size: 0.88rem;
   font-weight: 700;
-  font-family: "Times New Roman", Times, serif;
   box-shadow: 0 1px 3px rgba(190, 18, 60, 0.3);
   transition: all var(--transition-fast);
 }
@@ -179,7 +170,6 @@
 .form-group .label-row .char-count {
   font-size: 0.82rem;
   color: var(--color-text-muted);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .form-group .label-row .char-count.char-limit-reached {
@@ -191,7 +181,6 @@
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--color-text-main);
-  font-family: "Times New Roman", Times, serif;
 }
 
 .form-group .form-label .required-star {
@@ -208,7 +197,6 @@
   background-color: var(--color-bg-surface);
   color: var(--color-text-main);
   font-size: 0.95rem;
-  font-family: "Times New Roman", Times, serif;
   transition: all var(--transition-fast);
 }
 
@@ -238,7 +226,6 @@
   color: var(--color-danger);
   font-weight: 500;
   margin-top: 0.1rem;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .priority-selector {
@@ -259,7 +246,6 @@
   color: var(--color-text-secondary);
   font-size: 0.92rem;
   font-weight: 600;
-  font-family: "Times New Roman", Times, serif;
   transition: all var(--transition-fast);
 }
 
@@ -317,7 +303,6 @@
   border-radius: var(--radius-md);
   font-size: 0.92rem;
   font-weight: 600;
-  font-family: "Times New Roman", Times, serif;
   color: var(--color-text-secondary);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg-surface);
@@ -342,7 +327,6 @@
   border-radius: var(--radius-md);
   font-size: 0.95rem;
   font-weight: 700;
-  font-family: "Times New Roman", Times, serif;
   color: white;
   background-color: var(--color-primary);
   box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);

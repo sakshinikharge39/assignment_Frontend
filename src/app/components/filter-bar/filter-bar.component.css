@@ -144,7 +144,6 @@
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: "Times New Roman", Times, serif;
   color: var(--color-text-secondary);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
@@ -198,7 +197,6 @@
   color: var(--color-text-secondary);
   font-size: 0.9rem;
   font-weight: 600;
-  font-family: "Times New Roman", Times, serif;
   white-space: nowrap;
   transition: all var(--transition-fast);
   flex-shrink: 0;

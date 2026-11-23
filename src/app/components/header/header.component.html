@@ -11,24 +11,6 @@
       </div>
     </div>
 
-    <!-- Quick Metrics (Desktop / Tablet) -->
-    <div class="stats-pills" aria-label="Task statistics">
-      <div class="stat-pill">
-        <span class="stat-label">Total</span>
-        <span class="stat-value">{{ counts().total }}</span>
-      </div>
-      <div class="stat-pill stat-overdue" [class.has-overdue]="counts().overdue > 0">
-        <span class="stat-label">
-          <i class="fa-solid fa-triangle-exclamation stat-icon" aria-hidden="true"></i>
-          Overdue
-        </span>
-        <span class="stat-value">{{ counts().overdue }}</span>
-      </div>
-      <div class="stat-pill">
-        <span class="stat-label">Active</span>
-        <span class="stat-value">{{ counts().todo + counts().inProgress }}</span>
-      </div>
-    </div>
 
     <!-- Top Actions & Failure Simulation Switch -->
     <div class="header-actions">

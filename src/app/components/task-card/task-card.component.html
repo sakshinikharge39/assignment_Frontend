@@ -29,7 +29,7 @@
         } @else if (task.status === 'In Progress') {
           <i class="fa-solid fa-spinner fa-spin-pulse"></i>
         } @else {
-          <i class="fa-regular fa-circle"></i>
+          <i class="fa-solid fa-circle-dot"></i>
         }
       </span>
       <span class="status-name">{{ task.status }}</span>
@@ -79,7 +79,7 @@
         </span>
       } @else if (task.dueDate) {
         <span class="due-badge">
-          <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
           Due {{ displayDueDate }}
         </span>
       } @else {
@@ -96,7 +96,7 @@
         title="Edit task"
         aria-label="Edit task"
       >
-        <i class="fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-pen" aria-hidden="true"></i>
       </button>
 
       <button
@@ -106,7 +106,7 @@
         title="Delete task"
         aria-label="Delete task"
       >
-        <i class="fa-regular fa-trash-can"></i>
+        <i class="fa-solid fa-trash" aria-hidden="true"></i>
       </button>
     </div>
   </div>

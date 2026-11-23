@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
 :root {
   /* Typography - Times New Roman */
   --font-family-base: "Times New Roman", Times, serif;
@@ -101,7 +103,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Times New Roman", Times, serif;
 }
 
 html, body {
@@ -113,6 +114,21 @@ html, body {
   background-color: var(--color-bg-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure Font Awesome icon font-family is never overridden by text fonts */
+.fa, .fas, .far, .fal, .fad, .fab,
+.fa-solid, .fa-regular, .fa-brands,
+i[class*="fa-"], span[class*="fa-"] {
+  font-family: "Font Awesome 6 Free", "FontAwesome" !important;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+}
+
+.fa::before, .fas::before, .far::before, .fa-solid::before, .fa-regular::before,
+i[class*="fa-"]::before, span[class*="fa-"]::before {
+  font-family: inherit !important;
 }
 
 button, input, select, textarea {

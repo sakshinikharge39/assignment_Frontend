@@ -209,6 +209,8 @@
 }
 
 .card-actions .action-btn {
+  width: 28px;
+  height: 28px;
   padding: 0.3rem;
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
@@ -216,6 +218,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card-actions .action-btn i {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-block;
 }
 
 .card-actions .action-btn:hover {
