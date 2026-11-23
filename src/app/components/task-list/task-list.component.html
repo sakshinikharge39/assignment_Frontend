@@ -1,0 +1,99 @@
+<div class="task-list-wrapper">
+  <!-- Loading Skeleton State -->
+  @if (loading()) {
+    <div class="skeleton-container" aria-label="Loading tasks...">
+      @for (i of [1, 2, 3, 4]; track i) {
+        <div class="skeleton-card">
+          <div class="skeleton-header">
+            <div class="skeleton-badge"></div>
+            <div class="skeleton-pill"></div>
+          </div>
+          <div class="skeleton-line-title"></div>
+          <div class="skeleton-line-desc"></div>
+          <div class="skeleton-footer">
+            <div class="skeleton-date"></div>
+            <div class="skeleton-btn"></div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Empty State -->
+  @else if (tasks().length === 0) {
+    <div class="empty-state-card" role="status">
+      <div class="empty-icon-circle" aria-hidden="true">
+        @if (filter() === 'overdue') {
+          🎉
+        } @else if (searchQuery()) {
+          🔍
+        } @else if (filter() === 'done') {
+          📋
+        } @else {
+          ✨
+        }
+      </div>
+
+      <h3 class="empty-title">
+        @if (filter() === 'overdue') {
+          No Overdue Tasks!
+        } @else if (searchQuery()) {
+          No Tasks Found Matching "{{ searchQuery() }}"
+        } @else if (filter() === 'done') {
+          No Tasks Completed Yet
+        } @else if (filter() === 'in-progress') {
+          No Tasks Currently In Progress
+        } @else if (filter() === 'todo') {
+          No Tasks In Todo
+        } @else {
+          Your Task List is Empty
+        }
+      </h3>
+
+      <p class="empty-subtitle">
+        @if (filter() === 'overdue') {
+          All your scheduled deadlines are on track. Great job staying ahead of your work!
+        } @else if (searchQuery()) {
+          Try clearing your search query or adjusting your keyword filters.
+        } @else if (filter() === 'done') {
+          Advance active tasks to Done as you complete them to celebrate your milestones.
+        } @else {
+          Capture your upcoming commitments, set priorities, and keep projects moving.
+        }
+      </p>
+
+      @if (filter() !== 'all' || searchQuery()) {
+        <button
+          type="button"
+          class="btn-reset-filters"
+          (click)="store.setFilter('all'); store.setSearchQuery('')"
+        >
+          View All Tasks
+        </button>
+      } @else {
+        <button
+          type="button"
+          class="btn-create-first"
+          (click)="onCreateFirstTask()"
+        >
+          + Create Your First Task
+        </button>
+      }
+    </div>
+  }
+
+  <!-- Task Cards Grid/List -->
+  @else {
+    <div class="tasks-grid" role="list" aria-label="Task planner tasks">
+      @for (task of tasks(); track task.id) {
+        <app-task-card
+          [task]="task"
+          [isSelected]="selectedTaskId() === task.id"
+          (selectTask)="onSelectTask($event)"
+          (editTask)="onEditTask($event)"
+          (deleteTask)="onDeleteTask($event)"
+        ></app-task-card>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,191 @@
+<div
+  class="form-modal-backdrop"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="form-dialog-title"
+>
+  <div class="form-modal-container">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <div class="header-title-group">
+        <h2 id="form-dialog-title" class="modal-title">
+          {{ isEditMode ? 'Edit Task' : 'Create New Task' }}
+        </h2>
+        <p class="modal-subtitle">
+          {{ isEditMode ? 'Update your task details and workflow status.' : 'Add a task to organize and prioritize your work.' }}
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="close-btn"
+        (click)="onCancel()"
+        aria-label="Close task form modal"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Failed-Save Recovery Inline Banner -->
+    @if (saveError()) {
+      <div class="save-error-alert" role="alert" aria-live="assertive">
+        <div class="alert-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="alert-content">
+          <div class="alert-title">Save Operation Failed</div>
+          <p class="alert-message">{{ saveError() }}</p>
+          <div class="alert-footer">
+            <span class="alert-hint">Your entered data has been preserved.</span>
+            @if (store.failNextSave()) {
+              <span class="alert-tip">Tip: Turn off "Simulate Save Failure" in the top bar to succeed.</span>
+            }
+            <button
+              type="button"
+              class="btn-retry"
+              (click)="retrySave()"
+              [disabled]="saving()"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              {{ saving() ? 'Retrying...' : 'Retry Save' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Form -->
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form" novalidate>
+      <!-- Title Field (Required, 3-120 chars trimmed) -->
+      <div class="form-group" [class.has-error]="titleControl?.invalid && (titleControl?.touched || isSubmitted())">
+        <div class="label-row">
+          <label for="task-title-input" class="form-label">
+            Title <span class="required-star">*</span>
+          </label>
+          <span class="char-count" [class.char-limit-reached]="titleCharCount > 120">
+            {{ titleCharCount }} / 120
+          </span>
+        </div>
+
+        <input
+          id="task-title-input"
+          type="text"
+          formControlName="title"
+          class="form-input"
+          placeholder="e.g. Prepare client review slide deck"
+          maxlength="125"
+          [attr.aria-invalid]="titleControl?.invalid && (titleControl?.touched || isSubmitted())"
+          aria-describedby="title-error-msg"
+        />
+
+        @if (titleControl?.invalid && (titleControl?.touched || isSubmitted())) {
+          <div id="title-error-msg" class="field-error" role="alert">
+            @if (titleControl?.errors?.['required']) {
+              <span>Title is required (cannot be blank or whitespace only).</span>
+            } @else if (titleControl?.errors?.['minlength']) {
+              <span>Title must be at least 3 non-whitespace characters long.</span>
+            } @else if (titleControl?.errors?.['maxlength']) {
+              <span>Title cannot exceed 120 characters.</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Description Field (Optional) -->
+      <div class="form-group">
+        <label for="task-desc-input" class="form-label">Description (Optional)</label>
+        <textarea
+          id="task-desc-input"
+          formControlName="description"
+          class="form-textarea"
+          rows="3"
+          placeholder="Add context, subtasks, links, or notes..."
+        ></textarea>
+      </div>
+
+      <!-- Priority Selection -->
+      <div class="form-group">
+        <label class="form-label">Priority</label>
+        <div class="priority-selector" role="radiogroup" aria-label="Task priority">
+          @for (p of priorities; track p) {
+            <button
+              type="button"
+              class="priority-btn"
+              [class.active]="priorityControl?.value === p"
+              [class.btn-high]="p === 'High'"
+              [class.btn-medium]="p === 'Medium'"
+              [class.btn-low]="p === 'Low'"
+              (click)="setPriority(p)"
+              role="radio"
+              [attr.aria-checked]="priorityControl?.value === p"
+            >
+              <span class="priority-shape" aria-hidden="true">
+                @if (p === 'High') { ▲ }
+                @else if (p === 'Medium') { ■ }
+                @else { ▼ }
+              </span>
+              <span class="priority-text">{{ p }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Due Date & Status Row -->
+      <div class="form-row-2">
+        <!-- Due Date Field (Optional, YYYY-MM-DD ISO) -->
+        <div class="form-group">
+          <label for="task-due-date" class="form-label">Due Date (Optional)</label>
+          <input
+            id="task-due-date"
+            type="date"
+            formControlName="dueDate"
+            class="form-input date-input"
+          />
+        </div>
+
+        <!-- Status Field -->
+        <div class="form-group">
+          <label for="task-status-select" class="form-label">Status</label>
+          <select id="task-status-select" formControlName="status" class="form-select">
+            @for (s of statuses; track s) {
+              <option [value]="s">{{ s }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Modal Footer Actions -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn-cancel"
+          (click)="onCancel()"
+          [disabled]="saving()"
+        >
+          Cancel
+        </button>
+
+        <!-- Submit Button with duplicate save prevention -->
+        <button
+          type="submit"
+          class="btn-submit"
+          [disabled]="saving() || (taskForm.invalid && isSubmitted())"
+        >
+          @if (saving()) {
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Saving Task...</span>
+          } @else {
+            <span>{{ isEditMode ? 'Save Changes' : 'Create Task' }}</span>
+          }
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<header class="app-header">
+  <div class="container header-container">
+    <!-- Brand / Title -->
+    <div class="brand-section">
+      <div class="brand-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <h1 class="brand-name">TaskPlanner</h1>
+        <span class="brand-subtitle">Personal Work Manager</span>
+      </div>
+    </div>
+
+    <!-- Quick Metrics (Desktop / Tablet) -->
+    <div class="stats-pills" aria-label="Task statistics">
+      <div class="stat-pill">
+        <span class="stat-label">Total</span>
+        <span class="stat-value">{{ counts().total }}</span>
+      </div>
+      <div class="stat-pill stat-overdue" [class.has-overdue]="counts().overdue > 0">
+        <span class="stat-label">
+          <span class="stat-icon" aria-hidden="true">⚠️</span>
+          Overdue
+        </span>
+        <span class="stat-value">{{ counts().overdue }}</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Active</span>
+        <span class="stat-value">{{ counts().todo + counts().inProgress }}</span>
+      </div>
+    </div>
+
+    <!-- Top Actions & Failure Simulation Switch -->
+    <div class="header-actions">
+      <!-- Visible Failure Simulation Control -->
+      <div class="simulation-control" [class.simulation-active]="failNextSave()">
+        <label for="fail-save-toggle" class="simulation-label">
+          <span class="label-text">Simulate Save Failure</span>
+          <span class="simulation-indicator" [class.active]="failNextSave()">
+            {{ failNextSave() ? 'ON' : 'OFF' }}
+          </span>
+        </label>
+        <button
+          type="button"
+          id="fail-save-toggle"
+          class="switch-btn"
+          role="switch"
+          [attr.aria-checked]="failNextSave()"
+          (click)="toggleFailureSimulation()"
+          title="Toggle failure simulation for testing failed save recovery"
+        >
+          <span class="switch-thumb"></span>
+        </button>
+      </div>
+
+      <!-- Reset Demo Data -->
+      <button
+        type="button"
+        class="btn-reset"
+        (click)="onResetData()"
+        title="Reset to default seeded demo tasks"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+        <span class="btn-text">Reset Demo</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Prominent banner when failure simulation is active -->
+  @if (failNextSave()) {
+    <div class="simulation-banner" role="status" aria-live="polite">
+      <div class="container banner-inner">
+        <span class="banner-icon" aria-hidden="true">⚠️</span>
+        <span class="banner-message">
+          <strong>Save Failure Mode is ACTIVE:</strong> Any attempt to create or edit tasks will simulate a network/server failure. This allows you to verify form recovery and the retry mechanism.
+        </span>
+        <button type="button" class="banner-dismiss" (click)="toggleFailureSimulation()">
+          Disable Failure Mode
+        </button>
+      </div>
+    </div>
+  }
+</header>

@@ -1,0 +1,154 @@
+<div class="drawer-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+  <div class="drawer-panel">
+    <!-- Header -->
+    <div class="panel-header">
+      <div class="header-left">
+        <span class="badge-status" [class.badge-done]="task.status === 'Done'">
+          {{ task.status }}
+        </span>
+        @if (isTaskOverdue) {
+          <span class="badge-overdue">
+            ⚠️ Overdue by {{ overdueDays }} {{ overdueDays === 1 ? 'day' : 'days' }}
+          </span>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="close-btn"
+        (click)="close.emit()"
+        aria-label="Close task details"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="panel-content">
+      <h2 id="detail-title" class="task-title" [class.line-through]="task.status === 'Done'">
+        {{ task.title }}
+      </h2>
+
+      @if (task.description) {
+        <div class="description-section">
+          <h4 class="section-label">Description</h4>
+          <p class="description-text">{{ task.description }}</p>
+        </div>
+      }
+
+      <!-- Interactive Priority Switcher -->
+      <div class="interactive-section">
+        <label class="section-label">Priority (Click to change)</label>
+        <div class="priority-selector" role="group" aria-label="Change task priority">
+          @for (p of priorities; track p) {
+            <button
+              type="button"
+              class="priority-chip"
+              [class.active]="task.priority === p"
+              [class.chip-high]="p === 'High'"
+              [class.chip-medium]="p === 'Medium'"
+              [class.chip-low]="p === 'Low'"
+              (click)="onChangePriority(p)"
+              [attr.aria-pressed]="task.priority === p"
+            >
+              <span class="chip-shape" aria-hidden="true">
+                @if (p === 'High') { ▲ }
+                @else if (p === 'Medium') { ■ }
+                @else { ▼ }
+              </span>
+              {{ p }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Status Lifecycle Stepper -->
+      <div class="interactive-section">
+        <label class="section-label">Workflow Status Progression</label>
+        <div class="status-stepper" aria-label="Workflow progress">
+          <div class="step-item" [class.current]="task.status === 'Todo'" [class.completed]="task.status === 'In Progress' || task.status === 'Done'">
+            <span class="step-num">1</span>
+            <span class="step-text">Todo</span>
+          </div>
+          <div class="step-connector" [class.active]="task.status === 'In Progress' || task.status === 'Done'"></div>
+          <div class="step-item" [class.current]="task.status === 'In Progress'" [class.completed]="task.status === 'Done'">
+            <span class="step-num">2</span>
+            <span class="step-text">In Progress</span>
+          </div>
+          <div class="step-connector" [class.active]="task.status === 'Done'"></div>
+          <div class="step-item" [class.current]="task.status === 'Done'" [class.completed]="task.status === 'Done'">
+            <span class="step-num">3</span>
+            <span class="step-text">Done</span>
+          </div>
+        </div>
+
+        <!-- Start / Advance Button -->
+        <button
+          type="button"
+          class="advance-action-btn"
+          [class.btn-start]="task.status === 'Todo'"
+          [class.btn-complete]="task.status === 'In Progress'"
+          [class.btn-reopen]="task.status === 'Done'"
+          (click)="onAdvanceStatus()"
+        >
+          @if (task.status === 'Todo') {
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Start Task (Move to In Progress)
+          } @else if (task.status === 'In Progress') {
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Complete Task (Move to Done)
+          } @else {
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+            Reopen Task (Move to Todo)
+          }
+        </button>
+      </div>
+
+      <!-- Metadata info -->
+      <div class="meta-section">
+        <div class="meta-item">
+          <span class="meta-label">Due Date:</span>
+          <span class="meta-value" [class.text-danger]="isTaskOverdue">
+            {{ formattedDueDate }}
+          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Created:</span>
+          <span class="meta-value">{{ task.createdAt | date:'mediumDate' }}</span>
+        </div>
+        @if (task.updatedAt) {
+          <div class="meta-item">
+            <span class="meta-label">Last Updated:</span>
+            <span class="meta-value">{{ task.updatedAt | date:'medium' }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Panel Actions -->
+    <div class="panel-footer">
+      <button type="button" class="btn-secondary" (click)="onEdit()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+        Edit Task
+      </button>
+
+      <button type="button" class="btn-danger-outline" (click)="onDelete()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
