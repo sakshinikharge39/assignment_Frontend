@@ -23,7 +23,7 @@ import { ToastComponent } from './components/toast/toast.component';
     ToastComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   readonly store = inject(TaskStore);

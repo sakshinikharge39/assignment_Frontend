@@ -2,7 +2,8 @@
 
 > **Company**: Comzent Technologies  
 > **Assignment**: UI/UX + Angular Developer Assignment  
-> **Tech Stack**: Angular 19.2.0 (Standalone Components, Signals, Reactive Forms), TypeScript 5.7, SCSS, Jasmine/Karma  
+> **Tech Stack**: Angular 19.2.0 (Standalone Components, Signals, Reactive Forms), TypeScript 5.7, Plain CSS, Jasmine/Karma  
+> **Typography**: Times New Roman, Times, serif (global typography)  
 
 ---
 
@@ -35,14 +36,14 @@ npm run build
 
 Every component strictly contains all four individual files:
 1. `*.component.html` (Template markup)
-2. `*.component.scss` (Component styling & responsive CSS tokens)
+2. `*.component.css` (Component styling & responsive CSS tokens)
 3. `*.component.ts` (Component TypeScript logic)
 4. `*.component.spec.ts` (Component unit tests)
 
 ```
 src/app/
 ├── app.component.html
-├── app.component.scss
+├── app.component.css
 ├── app.component.spec.ts
 ├── app.component.ts
 ├── app.config.ts
@@ -51,37 +52,37 @@ src/app/
 ├── components/
 │   ├── header/
 │   │   ├── header.component.html
-│   │   ├── header.component.scss
+│   │   ├── header.component.css
 │   │   ├── header.component.spec.ts
 │   │   └── header.component.ts
 │   ├── filter-bar/
 │   │   ├── filter-bar.component.html
-│   │   ├── filter-bar.component.scss
+│   │   ├── filter-bar.component.css
 │   │   ├── filter-bar.component.spec.ts
 │   │   └── filter-bar.component.ts
 │   ├── task-card/
 │   │   ├── task-card.component.html
-│   │   ├── task-card.component.scss
+│   │   ├── task-card.component.css
 │   │   ├── task-card.component.spec.ts
 │   │   └── task-card.component.ts
 │   ├── task-detail/
 │   │   ├── task-detail.component.html
-│   │   ├── task-detail.component.scss
+│   │   ├── task-detail.component.css
 │   │   ├── task-detail.component.spec.ts
 │   │   └── task-detail.component.ts
 │   ├── task-form/
 │   │   ├── task-form.component.html
-│   │   ├── task-form.component.scss
+│   │   ├── task-form.component.css
 │   │   ├── task-form.component.spec.ts
 │   │   └── task-form.component.ts
 │   ├── task-list/
 │   │   ├── task-list.component.html
-│   │   ├── task-list.component.scss
+│   │   ├── task-list.component.css
 │   │   ├── task-list.component.spec.ts
 │   │   └── task-list.component.ts
 │   └── toast/
 │       ├── toast.component.html
-│       ├── toast.component.scss
+│       ├── toast.component.css
 │       ├── toast.component.spec.ts
 │       └── toast.component.ts
 │

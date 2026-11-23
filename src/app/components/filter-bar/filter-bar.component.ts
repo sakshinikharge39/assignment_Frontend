@@ -9,7 +9,7 @@ import { TaskStore } from '../../core/store/task.store';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './filter-bar.component.html',
-  styleUrls: ['./filter-bar.component.scss']
+  styleUrls: ['./filter-bar.component.css'],
 })
 export class FilterBarComponent {
   readonly store = inject(TaskStore);
@@ -25,7 +25,7 @@ export class FilterBarComponent {
     { id: 'overdue', label: 'Overdue', icon: '⚠️' },
     { id: 'todo', label: 'Todo' },
     { id: 'in-progress', label: 'In Progress' },
-    { id: 'done', label: 'Done' }
+    { id: 'done', label: 'Done' },
   ];
 
   onSelectFilter(filter: TaskFilter): void {
@@ -53,11 +53,16 @@ export class FilterBarComponent {
   getBadgeCount(filter: TaskFilter): number {
     const c = this.counts();
     switch (filter) {
-      case 'all': return c.total;
-      case 'overdue': return c.overdue;
-      case 'todo': return c.todo;
-      case 'in-progress': return c.inProgress;
-      case 'done': return c.done;
+      case 'all':
+        return c.total;
+      case 'overdue':
+        return c.overdue;
+      case 'todo':
+        return c.todo;
+      case 'in-progress':
+        return c.inProgress;
+      case 'done':
+        return c.done;
     }
   }
 }

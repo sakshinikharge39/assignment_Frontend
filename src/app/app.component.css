@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .main-content {
@@ -16,32 +17,36 @@
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-3) 0 var(--space-2);
+}
 
-  @media (min-width: 680px) {
+@media (min-width: 680px) {
+  .action-hero {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
   }
 }
 
-.hero-text {
-  .page-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-text-main);
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+.hero-text .page-title {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
-    @media (min-width: 768px) {
-      font-size: 1.85rem;
-    }
+@media (min-width: 768px) {
+  .hero-text .page-title {
+    font-size: 2.15rem;
   }
+}
 
-  .page-desc {
-    margin-top: 0.25rem;
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
-  }
+.hero-text .page-desc {
+  margin-top: 0.25rem;
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  font-family: "Times New Roman", Times, serif;
 }
 
 .overdue-callout {
@@ -54,25 +59,26 @@
   background-color: #fff1f2;
   border: 1px solid #fecdd3;
   color: #9f1239;
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   font-weight: 600;
+  font-family: "Times New Roman", Times, serif;
   cursor: pointer;
   transition: all var(--transition-fast);
+}
 
-  &:hover {
-    background-color: #ffe4e6;
-    border-color: #fda4af;
-  }
+.overdue-callout:hover {
+  background-color: #ffe4e6;
+  border-color: #fda4af;
+}
 
-  .callout-icon {
-    font-size: 0.9rem;
-  }
+.overdue-callout .callout-icon {
+  font-size: 0.95rem;
+}
 
-  .callout-action {
-    margin-left: 0.35rem;
-    font-weight: 700;
-    text-decoration: underline;
-  }
+.overdue-callout .callout-action {
+  margin-left: 0.35rem;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .btn-new-task {
@@ -84,24 +90,27 @@
   background-color: var(--color-primary);
   color: white;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
   transition: all var(--transition-fast);
   white-space: nowrap;
+}
 
-  @media (min-width: 680px) {
+@media (min-width: 680px) {
+  .btn-new-task {
     display: inline-flex;
   }
+}
 
-  &:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
-  }
+.btn-new-task:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
 
-  &:active {
-    transform: translateY(0);
-  }
+.btn-new-task:active {
+  transform: translateY(0);
 }
 
 /* Mobile Floating Action Button (FAB) */
@@ -120,16 +129,18 @@
   box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
   z-index: 45;
   transition: all var(--transition-fast);
+}
 
-  @media (min-width: 680px) {
+@media (min-width: 680px) {
+  .mobile-fab {
     display: none;
   }
+}
 
-  &:hover {
-    transform: scale(1.05);
-  }
+.mobile-fab:hover {
+  transform: scale(1.05);
+}
 
-  &:active {
-    transform: scale(0.95);
-  }
+.mobile-fab:active {
+  transform: scale(0.95);
 }

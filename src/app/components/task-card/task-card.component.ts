@@ -9,7 +9,7 @@ import { formatDisplayDate, getDaysOverdue, getNextStatus, isOverdue } from '../
   standalone: true,
   imports: [CommonModule],
   templateUrl: './task-card.component.html',
-  styleUrls: ['./task-card.component.scss']
+  styleUrls: ['./task-card.component.css']
 })
 export class TaskCardComponent {
   private readonly store = inject(TaskStore);

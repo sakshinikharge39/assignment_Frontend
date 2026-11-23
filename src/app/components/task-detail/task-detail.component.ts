@@ -9,7 +9,7 @@ import { formatDisplayDate, getDaysOverdue, getNextStatus, isOverdue } from '../
   standalone: true,
   imports: [CommonModule],
   templateUrl: './task-detail.component.html',
-  styleUrls: ['./task-detail.component.scss']
+  styleUrls: ['./task-detail.component.css']
 })
 export class TaskDetailComponent {
   readonly store = inject(TaskStore);

@@ -54,12 +54,12 @@ The interface adheres to modern design systems (inspired by Linear, Apple HIG, a
 ## 4. Design System Tokens & Typography
 
 ### Typography Scale
-* **Font Family**: `Plus Jakarta Sans`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, sans-serif.
+* **Font Family**: `"Times New Roman", Times, serif`.
 * **Hierarchy**:
-  * `Display Title`: 28px (1.85rem), Bold 800, -0.025em tracking.
-  * `Section / Card Heading`: 16px (1.05rem), SemiBold 600, -0.01em tracking.
-  * `Body Text`: 15px (0.95rem), Regular 400, 1.5 line height.
-  * `Badges / Chips / Buttons`: 12px–13px (0.75rem–0.82rem), Bold 700.
+  * `Display Title`: 28px (1.85rem), Bold 800, -0.02em tracking.
+  * `Section / Card Heading`: 17px (1.1rem), SemiBold 700.
+  * `Body Text`: 16px (1.0rem), Regular 400, 1.5 line height.
+  * `Badges / Chips / Buttons`: 13px–14px (0.82rem–0.88rem), Bold 700.
 
 ### Color Tokens
 | Token | HEX / Value | Contrast Ratio | Usage |

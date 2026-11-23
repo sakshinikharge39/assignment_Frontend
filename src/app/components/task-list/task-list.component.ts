@@ -9,7 +9,7 @@ import { TaskCardComponent } from '../task-card/task-card.component';
   standalone: true,
   imports: [CommonModule, TaskCardComponent],
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
   readonly store = inject(TaskStore);

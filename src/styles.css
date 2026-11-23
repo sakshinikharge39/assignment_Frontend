@@ -1,8 +1,7 @@
-/* ==========================================================================
-   Design Tokens & CSS Variables - Personal Task Planner Design System
-   ========================================================================== */
-
 :root {
+  /* Typography - Times New Roman */
+  --font-family-base: "Times New Roman", Times, serif;
+
   /* Color Palette - Neutral */
   --color-bg-base: #f8fafc;
   --color-bg-surface: #ffffff;
@@ -102,13 +101,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Times New Roman", Times, serif;
 }
 
 html, body {
   height: 100%;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-text-main);
   background-color: var(--color-bg-base);
@@ -117,7 +116,8 @@ html, body {
 }
 
 button, input, select, textarea {
-  font: inherit;
+  font-family: "Times New Roman", Times, serif;
+  font-size: inherit;
   color: inherit;
 }
 
@@ -154,8 +154,10 @@ button {
   margin-right: auto;
   padding-left: var(--space-4);
   padding-right: var(--space-4);
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .container {
     padding-left: var(--space-6);
     padding-right: var(--space-6);
   }
