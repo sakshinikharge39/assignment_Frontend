@@ -42,7 +42,7 @@ export class TaskCardComponent {
     event.stopPropagation();
     this.store.advanceTaskStatus(this.task.id);
   }
-
+  
   onCardClick(): void {
     this.selectTask.emit(this.task.id);
   }

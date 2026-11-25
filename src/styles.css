@@ -4,14 +4,17 @@
   /* Typography - Times New Roman */
   --font-family-base: "Times New Roman", Times, serif;
 
-  /* Color Palette - Neutral */
+  /* Color Palette - Neutrals & Surfaces */
   --color-bg-base: #f8fafc;
   --color-bg-surface: #ffffff;
   --color-bg-subtle: #f1f5f9;
   --color-bg-hover: #e2e8f0;
+  --color-bg-done-card: #fafbfc;
   --color-border: #e2e8f0;
   --color-border-subtle: #cbd5e1;
-  --color-border-focus: #4f46e5;
+  --color-border-focus: #818cf8;
+  --color-backdrop: rgba(15, 23, 42, 0.5);
+  --color-backdrop-subtle: rgba(15, 23, 42, 0.45);
 
   /* Typography Colors - High WCAG Contrast */
   --color-text-main: #0f172a;
@@ -22,8 +25,11 @@
   /* Primary Brand Tokens */
   --color-primary: #4f46e5;
   --color-primary-hover: #4338ca;
+  --color-primary-light: #6366f1;
+  --color-primary-accent: #7c3aed;
   --color-primary-subtle: #eef2ff;
   --color-primary-text: #4338ca;
+  --color-primary-border-subtle: rgba(79, 70, 229, 0.2);
 
   /* Priority Colors & Non-color indicator styling */
   --priority-high-bg: #fee2e2;
@@ -37,6 +43,8 @@
   --priority-low-bg: #f1f5f9;
   --priority-low-text: #334155;
   --priority-low-border: #cbd5e1;
+  --priority-low-active-bg: #e2e8f0;
+  --priority-low-active-border: #94a3b8;
 
   /* Status Colors */
   --status-todo-bg: #f1f5f9;
@@ -56,21 +64,57 @@
   --color-overdue-text: #b91c1c;
   --color-overdue-border: #fecaca;
   --color-overdue-badge-bg: #dc2626;
+  --bg-card-overdue: linear-gradient(90deg, rgba(254, 242, 242, 0.5) 0%, rgba(255, 255, 255, 1) 15%);
 
-  /* Danger / Failure Tokens */
+  /* Danger / Failure / Simulation Tokens */
+  --color-danger: #e11d48;
+  --color-danger-hover: #be123c;
+  --color-danger-dark: #be123c;
+  --color-danger-deep: #881337;
   --color-danger-bg: #fff1f2;
+  --color-danger-bg-hover: #ffe4e6;
+  --color-danger-input-bg: #fffafb;
   --color-danger-text: #9f1239;
   --color-danger-border: #fecdd3;
-  --color-danger: #e11d48;
+  --color-danger-border-hover: #fda4af;
 
   /* Success Tokens */
   --color-success: #16a34a;
+  --color-success-hover: #15803d;
+  --color-success-bright: #10b981;
+
+  /* Action & Info Tokens (Status Stepper & Controls) */
+  --color-info: #2563eb;
+  --color-info-hover: #1d4ed8;
+  --color-neutral-action: #475569;
+  --color-neutral-action-hover: #334155;
+  --color-switch-off: #cbd5e1;
+
+  /* Translucent Overlays */
+  --color-white-overlay-25: rgba(255, 255, 255, 0.25);
+  --color-white-overlay-30: rgba(255, 255, 255, 0.3);
 
   /* Shadows & Elevation */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-focus-ring: 0 0 0 2px rgba(129, 140, 248, 0.25);
+  --shadow-danger-focus-ring: 0 0 0 2px rgba(225, 29, 72, 0.18);
+  --shadow-primary-sm: 0 2px 6px rgba(79, 70, 229, 0.25);
+  --shadow-primary: 0 4px 12px rgba(79, 70, 229, 0.3);
+  --shadow-primary-hover: 0 6px 16px rgba(79, 70, 229, 0.4);
+  --shadow-fab: 0 6px 20px rgba(79, 70, 229, 0.45);
+  --shadow-brand-icon: 0 4px 10px rgba(79, 70, 229, 0.3);
+  --shadow-card-selected: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  --shadow-thumb: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-dismiss: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-primary-accent));
+  --gradient-danger: linear-gradient(90deg, var(--color-danger-dark), var(--color-danger));
+  --skeleton-gradient: linear-gradient(90deg, var(--color-bg-subtle) 25%, var(--color-bg-hover) 50%, var(--color-bg-subtle) 75%);
 
   /* Border Radii */
   --radius-sm: 6px;
@@ -80,14 +124,14 @@
   --radius-full: 9999px;
 
   /* Spacing Scale */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
+  --space-1: 0.2rem;
+  --space-2: 0.4rem;
+  --space-3: 0.65rem;
+  --space-4: 0.85rem;
+  --space-5: 1.1rem;
+  --space-6: 1.35rem;
+  --space-8: 1.75rem;
+  --space-10: 2.25rem;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -105,11 +149,15 @@
   padding: 0;
 }
 
+html {
+  font-size: 14px;
+}
+
 html, body {
   height: 100%;
   font-family: "Times New Roman", Times, serif;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.45;
   color: var(--color-text-main);
   background-color: var(--color-bg-base);
   -webkit-font-smoothing: antialiased;
@@ -137,16 +185,47 @@ button, input, select, textarea {
   color: inherit;
 }
 
+/* Eliminate harsh/dark double outlines on form fields */
+input, select, textarea {
+  outline: none;
+}
+
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  outline: none !important;
+}
+
+/* Disable native browser clear (x) button on search inputs to prevent duplicate icons */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+input[type="search"]::-ms-clear,
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 button {
   cursor: pointer;
   border: none;
   background: none;
 }
 
-/* Accessible focus outlines */
+/* Accessible, clean focus outline for keyboard interactive elements */
 :focus-visible {
   outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 /* Accessible screen-reader utility */
@@ -174,7 +253,7 @@ button {
 
 @media (min-width: 768px) {
   .container {
-    padding-left: var(--space-6);
-    padding-right: var(--space-6);
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
   }
 }

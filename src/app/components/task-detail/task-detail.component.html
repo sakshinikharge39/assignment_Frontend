@@ -2,15 +2,24 @@
   <div class="drawer-panel">
     <!-- Header -->
     <div class="panel-header">
-      <div class="header-left">
-        <span class="badge-status" [class.badge-done]="task.status === 'Done'">
-          {{ task.status }}
-        </span>
-        @if (isTaskOverdue) {
-          <span class="badge-overdue">
-            ⚠️ Overdue by {{ overdueDays }} {{ overdueDays === 1 ? 'day' : 'days' }}
+      <div class="header-title-container">
+        <div class="panel-title-wrapper">
+          <!-- <h3 class="panel-main-heading">Task Details</h3> -->
+           <h2 id="detail-title" class="task-title" [class.line-through]="task.status === 'Done'">
+          {{ task.title }}
+        </h2>
+        </div>
+        <!-- <div class="header-badges">
+          <span class="badge-status" [class.badge-done]="task.status === 'Done'">
+            {{ task.status }}
           </span>
-        }
+          @if (isTaskOverdue) {
+            <span class="badge-overdue">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+              Overdue ({{ overdueDays }} {{ overdueDays === 1 ? 'day' : 'days' }})
+            </span>
+          }
+        </div> -->
       </div>
 
       <button
@@ -25,13 +34,9 @@
 
     <!-- Content -->
     <div class="panel-content">
-      <h2 id="detail-title" class="task-title" [class.line-through]="task.status === 'Done'">
-        {{ task.title }}
-      </h2>
-
       @if (task.description) {
         <div class="description-section">
-          <h4 class="section-label">Description</h4>
+          <!-- <h4 class="section-label">Description</h4> -->
           <p class="description-text">{{ task.description }}</p>
         </div>
       }

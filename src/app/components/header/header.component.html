@@ -18,9 +18,7 @@
       <div class="simulation-control" [class.simulation-active]="failNextSave()">
         <label for="fail-save-toggle" class="simulation-label">
           <span class="label-text">Simulate Save Failure</span>
-          <span class="simulation-indicator" [class.active]="failNextSave()">
-            {{ failNextSave() ? 'ON' : 'OFF' }}
-          </span>
+          
         </label>
         <button
           type="button"
@@ -56,9 +54,7 @@
         <span class="banner-message">
           <strong>Save Failure Mode is ACTIVE:</strong> Any attempt to create or edit tasks will simulate a network/server failure. This allows you to verify form recovery and the retry mechanism.
         </span>
-        <button type="button" class="banner-dismiss" (click)="toggleFailureSimulation()">
-          Disable Failure Mode
-        </button>
+        
       </div>
     </div>
   }

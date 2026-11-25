@@ -73,9 +73,9 @@
         [attr.aria-selected]="currentFilter() === tab.id"
         (click)="onSelectFilter(tab.id)"
       >
-        @if (tab.iconClass) {
+        <!-- @if (tab.iconClass) {
           <i [class]="tab.iconClass" class="chip-icon" aria-hidden="true"></i>
-        }
+        } -->
         <span class="chip-label">{{ tab.label }}</span>
         <span class="chip-badge" [class.badge-active]="currentFilter() === tab.id">
           {{ getBadgeCount(tab.id) }}

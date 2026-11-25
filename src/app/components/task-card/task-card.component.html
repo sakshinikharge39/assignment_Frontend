@@ -19,9 +19,6 @@
       [class.status-todo]="task.status === 'Todo'"
       [class.status-progress]="task.status === 'In Progress'"
       [class.status-done]="task.status === 'Done'"
-      (click)="onAdvanceStatus($event)"
-      [attr.title]="'Current: ' + task.status + '. Click to advance to ' + nextStatus"
-      [attr.aria-label]="'Advance task from ' + task.status + ' to ' + nextStatus"
     >
       <span class="status-icon" aria-hidden="true">
         @if (task.status === 'Done') {
@@ -33,7 +30,7 @@
         }
       </span>
       <span class="status-name">{{ task.status }}</span>
-      <span class="advance-hint" aria-hidden="true">→ {{ nextStatus }}</span>
+      
     </button>
 
     <!-- Priority Badge with shape cue -->
@@ -44,7 +41,7 @@
       [class.priority-low]="task.priority === 'Low'"
       [attr.aria-label]="'Priority: ' + task.priority"
     >
-      <span class="priority-shape" aria-hidden="true">
+      <!-- <span class="priority-shape">
         @if (task.priority === 'High') {
           <i class="fa-solid fa-caret-up"></i>
         } @else if (task.priority === 'Medium') {
@@ -52,7 +49,7 @@
         } @else {
           <i class="fa-solid fa-caret-down"></i>
         }
-      </span>
+      </span> -->
       <span class="priority-text">{{ task.priority }} Priority</span>
     </div>
   </div>

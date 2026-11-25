@@ -36,21 +36,6 @@
         <div class="alert-content">
           <div class="alert-title">Save Operation Failed</div>
           <p class="alert-message">{{ saveError() }}</p>
-          <div class="alert-footer">
-            <span class="alert-hint">Your entered data has been preserved.</span>
-            @if (store.failNextSave()) {
-              <span class="alert-tip">Tip: Turn off "Simulate Save Failure" in the top bar to succeed.</span>
-            }
-            <button
-              type="button"
-              class="btn-retry"
-              (click)="retrySave()"
-              [disabled]="saving()"
-            >
-              <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
-              {{ saving() ? 'Retrying...' : 'Retry Save' }}
-            </button>
-          </div>
         </div>
       </div>
     }
@@ -82,7 +67,7 @@
         @if (titleControl?.invalid && (titleControl?.touched || isSubmitted())) {
           <div id="title-error-msg" class="field-error" role="alert">
             @if (titleControl?.errors?.['required']) {
-              <span>Title is required (cannot be blank or whitespace only).</span>
+              <span>Enter a title with 3–120 characters.</span>
             } @else if (titleControl?.errors?.['minlength']) {
               <span>Title must be at least 3 non-whitespace characters long.</span>
             } @else if (titleControl?.errors?.['maxlength']) {
