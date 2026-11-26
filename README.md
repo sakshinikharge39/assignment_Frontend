@@ -1,8 +1,7 @@
 # Personal Task Planner — Angular 19 Responsive Application
 
-> **Company**: Comzent Technologies  
 > **Assignment**: UI/UX + Angular Developer Assignment  
-> **Tech Stack**: Angular 19.2.0 (Standalone Components, Signals, Reactive Forms), TypeScript 5.7, Plain CSS, Jasmine/Karma  
+> **Tech Stack**: Angular 20.3.43 (Standalone Components, Signals, Reactive Forms), TypeScript 5.7, Plain CSS, Jasmine/Karma  
 > **Typography**: Times New Roman, Times, serif (global typography)  
 
 ---
@@ -21,14 +20,10 @@
 npm install
 
 # 2. Run development server (serves at http://localhost:4200/)
-npm start
-
-# 3. Run all unit tests (Chrome Headless)
-npm test -- --watch=false --browsers=ChromeHeadless
+ng s
 
 # 4. Production build
-npm run build
-```
+ng build
 
 ---
 
@@ -40,71 +35,6 @@ Every component strictly contains all four individual files:
 3. `*.component.ts` (Component TypeScript logic)
 4. `*.component.spec.ts` (Component unit tests)
 
-```
-src/app/
-├── app.component.html
-├── app.component.css
-├── app.component.spec.ts
-├── app.component.ts
-├── app.config.ts
-├── app.routes.ts
-│
-├── components/
-│   ├── header/
-│   │   ├── header.component.html
-│   │   ├── header.component.css
-│   │   ├── header.component.spec.ts
-│   │   └── header.component.ts
-│   ├── filter-bar/
-│   │   ├── filter-bar.component.html
-│   │   ├── filter-bar.component.css
-│   │   ├── filter-bar.component.spec.ts
-│   │   └── filter-bar.component.ts
-│   ├── task-card/
-│   │   ├── task-card.component.html
-│   │   ├── task-card.component.css
-│   │   ├── task-card.component.spec.ts
-│   │   └── task-card.component.ts
-│   ├── task-detail/
-│   │   ├── task-detail.component.html
-│   │   ├── task-detail.component.css
-│   │   ├── task-detail.component.spec.ts
-│   │   └── task-detail.component.ts
-│   ├── task-form/
-│   │   ├── task-form.component.html
-│   │   ├── task-form.component.css
-│   │   ├── task-form.component.spec.ts
-│   │   └── task-form.component.ts
-│   ├── task-list/
-│   │   ├── task-list.component.html
-│   │   ├── task-list.component.css
-│   │   ├── task-list.component.spec.ts
-│   │   └── task-list.component.ts
-│   └── toast/
-│       ├── toast.component.html
-│       ├── toast.component.css
-│       ├── toast.component.spec.ts
-│       └── toast.component.ts
-│
-└── core/
-    ├── models/
-    │   └── task.model.ts
-    ├── repositories/
-    │   ├── task.repository.ts
-    │   ├── mock-task-api.service.ts
-    │   └── mock-task-api.service.spec.ts
-    ├── services/
-    │   └── toast.service.ts
-    ├── store/
-    │   ├── task.store.ts
-    │   └── task.store.spec.ts
-    ├── utils/
-    │   ├── task.utils.ts
-    │   └── task.utils.spec.ts
-    └── validators/
-        ├── task.validators.ts
-        └── task.validators.spec.ts
-```
 
 ---
 
@@ -259,7 +189,6 @@ To verify the required user journey:
 
 ## ⏱ Submission Details
 
-- **Time Spent**: ~4 hours (Architecture & Models: 45 min, Repository & Signals Store: 45 min, Components & Responsive SCSS: 1.5 hr, Tests & Error Recovery: 45 min, Design Specs & Docs: 30 min).
 - **Assumptions**: 
   - Date comparisons use local calendar `YYYY-MM-DD` strings to prevent UTC midnight date shift.
   - Tasks without due dates are sorted after tasks with due dates.
