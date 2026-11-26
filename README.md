@@ -189,7 +189,6 @@ To verify the required user journey:
 
 ## ⏱ Submission Details
 
-- **Time Spent**: ~4 hours (Architecture & Models: 45 min, Repository & Signals Store: 45 min, Components & Responsive SCSS: 1.5 hr, Tests & Error Recovery: 45 min, Design Specs & Docs: 30 min).
 - **Assumptions**: 
   - Date comparisons use local calendar `YYYY-MM-DD` strings to prevent UTC midnight date shift.
   - Tasks without due dates are sorted after tasks with due dates.
