@@ -1,6 +1,5 @@
 # Personal Task Planner — Angular 19 Responsive Application
 
-> **Company**: Comzent Technologies  
 > **Assignment**: UI/UX + Angular Developer Assignment  
 > **Tech Stack**: Angular 19.2.0 (Standalone Components, Signals, Reactive Forms), TypeScript 5.7, Plain CSS, Jasmine/Karma  
 > **Typography**: Times New Roman, Times, serif (global typography)  
