@@ -20,14 +20,10 @@
 npm install
 
 # 2. Run development server (serves at http://localhost:4200/)
-npm start
-
-# 3. Run all unit tests (Chrome Headless)
-npm test -- --watch=false --browsers=ChromeHeadless
+ng s
 
 # 4. Production build
-npm run build
-```
+ng build
 
 ---
 
